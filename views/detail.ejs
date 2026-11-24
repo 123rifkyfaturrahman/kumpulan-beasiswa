@@ -1,0 +1,418 @@
+<% const detailTitle = scholarship.title || 'Beasiswa'; %>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Detail <%= detailTitle %> - CariBeasiswa ID</title>
+    <!-- Google Fonts: Plus Jakarta Sans & Material Symbols Outlined -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+    <style>
+        @layer base {
+            html, body { margin: 0; padding: 0; }
+            body { overscroll-behavior: none; }
+            main > :first-child { margin-top: 0 !important; }
+            main > :last-child { margin-bottom: 0 !important; }
+        }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+    <!-- Tailwind CSS CDN & Custom Design Tokens -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-primary-fixed": "#00164e",
+                        "on-secondary-fixed": "#00201d",
+                        "surface-container-highest": "#d5e3fc",
+                        "on-secondary-container": "#006f66",
+                        "on-tertiary-fixed": "#2a1700",
+                        "surface-bright": "#f8f9ff",
+                        "primary-fixed": "#dce1ff",
+                        "surface": "#f8f9ff",
+                        "on-background": "#0d1c2e",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#6bd8cb",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#0d1c2e",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#c5c5d3",
+                        "inverse-surface": "#233144",
+                        "surface-dim": "#ccdbf3",
+                        "surface-container-high": "#dce9ff",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#d5e3fc",
+                        "inverse-primary": "#b6c4ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#005049",
+                        "on-primary-container": "#90a8ff",
+                        "error": "#ba1a1a",
+                        "surface-container": "#e6eeff",
+                        "secondary-fixed": "#89f5e7",
+                        "on-primary-fixed-variant": "#264191",
+                        "surface-container-low": "#eff4ff",
+                        "surface-tint": "#4059aa",
+                        "on-tertiary-container": "#ef9900",
+                        "secondary": "#006a61",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#3e2400",
+                        "secondary-container": "#86f2e4",
+                        "primary": "#00236f",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "outline": "#757682",
+                        "tertiary-container": "#5c3800",
+                        "background": "#f8f9ff",
+                        "on-surface-variant": "#444651",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary-fixed": "#ffddb8",
+                        "primary-container": "#1e3a8a"
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                    spacing: {
+                        "margin-mobile": "1rem", "margin": "2rem", "space-lg": "1.5rem", "space-md": "1rem",
+                        "gutter-mobile": "1rem", "space-xl": "2.5rem", "space-sm": "0.5rem", "space-xs": "0.25rem", "gutter": "1.5rem"
+                    },
+                    fontFamily: {
+                        "body-lg": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"],
+                        "body-sm": ["Plus Jakarta Sans"], "headline-xl-mobile": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"],
+                        "display-hero-mobile": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"],
+                        "label-lg": ["Plus Jakarta Sans"], "display-hero": ["Plus Jakarta Sans"], "headline-xl": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"]
+                    },
+                    fontSize: {
+                        "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+                        "headline-lg": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "headline-xl-mobile": ["26px", { "lineHeight": "34px", "fontWeight": "700" }],
+                        "headline-sm": ["18px", { "lineHeight": "26px", "fontWeight": "600" }],
+                        "display-hero-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "800" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "700" }],
+                        "headline-md": ["22px", { "lineHeight": "30px", "fontWeight": "600" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "display-hero": ["48px", { "lineHeight": "56px", "fontWeight": "800" }],
+                        "headline-xl": ["36px", { "lineHeight": "44px", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased">
+    <!-- Header Navigasi -->
+    <header class="fixed top-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+        <div class="h-20 max-w-7xl mx-auto px-4 sm:px-margin flex items-center justify-between gap-gutter">
+            <div class="flex items-center gap-space-md">
+                <div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-on-primary shadow-xs">
+                    <span class="material-symbols-outlined text-xl">school</span>
+                </div>
+                <a class="flex items-center" href="/">
+                    <span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">CariBeasiswa</span>
+                    <span class="font-label-sm text-label-sm text-secondary bg-secondary-fixed/50 px-space-xs py-0.5 rounded ml-space-xs">ID</span>
+                </a>
+            </div>
+            <!-- Navigasi Utama -->
+            <nav class="hidden lg:flex items-center gap-space-xs">
+                <a class="px-space-md py-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-all font-label-lg text-label-lg rounded-lg" href="/">Beranda</a>
+                <a aria-current="page" class="px-space-md py-space-sm transition-all bg-surface-container-high text-primary font-label-lg font-bold rounded-lg shadow-sm" href="/cari-beasiswa">Cari Beasiswa</a>
+                <a class="px-space-md py-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-all font-label-lg text-label-lg rounded-lg" href="/bookmark">Bookmark</a>
+                <a class="px-space-md py-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-all font-label-lg text-label-lg rounded-lg" href="/tips-panduan">Tips &amp; Panduan</a>
+                <a class="px-space-md py-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-all font-label-lg text-label-lg rounded-lg" href="/kontak">Kontak</a>
+            </nav>
+            <div class="flex items-center gap-space-md">
+                <form action="/cari-beasiswa" class="relative hidden md:block w-56 lg:w-64" method="GET">
+                    <input class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm rounded-lg pl-9 pr-space-md py-space-sm placeholder:text-on-surface-variant focus:outline-none focus:bg-surface-container-lowest transition-colors" name="keyword" placeholder="Cari beasiswa, jenjang..." type="text"/>
+                    <span class="material-symbols-outlined text-on-surface-variant text-base absolute left-space-sm top-1/2 -translate-y-1/2 pointer-events-none">search</span>
+                </form>
+                <a class="relative p-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="/bookmark" title="Simpanan Beasiswa">
+                    <span class="material-symbols-outlined">bookmark</span>
+                    <span id="headerBookmarkCount" class="absolute top-1 right-1 w-4 h-4 rounded-full bg-secondary text-on-secondary font-label-sm text-[10px] flex items-center justify-center font-bold">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Toast Notification -->
+    <div id="toastNotification" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="bg-inverse-surface text-inverse-on-surface px-space-md py-space-sm rounded-xl shadow-xl flex items-center gap-space-sm">
+            <span class="material-symbols-outlined text-secondary-fixed-dim text-lg">check_circle</span>
+            <span id="toastMessage" class="font-body-md text-body-md">Tautan berhasil disalin!</span>
+        </div>
+    </div>
+
+    <main class="w-full pt-20 bg-surface min-h-screen">
+        <div class="flex flex-col w-full">
+            <section class="max-w-7xl mx-auto w-full px-4 sm:px-margin py-space-md">
+                <nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant">
+                    <a class="hover:text-primary transition-colors flex items-center gap-1" href="/">
+                        <span class="material-symbols-outlined text-base">home</span>
+                        <span>Beranda</span>
+                    </a>
+                    <span class="material-symbols-outlined text-sm text-outline-variant">chevron_right</span>
+                    <a class="hover:text-primary transition-colors" href="/cari-beasiswa">Cari Beasiswa</a>
+                    <span class="material-symbols-outlined text-sm text-outline-variant">chevron_right</span>
+                    <span class="text-on-surface font-semibold truncate max-w-xs md:max-w-md"><%= detailTitle %></span>
+                </nav>
+            </section>
+
+            <section class="max-w-7xl mx-auto w-full px-4 sm:px-margin pb-space-lg">
+                <div class="bg-surface-container-lowest rounded-xl shadow-md p-space-md md:p-space-xl flex flex-col gap-space-lg relative overflow-hidden">
+                    <div class="absolute -right-24 -top-24 w-80 h-80 rounded-full bg-secondary-fixed/30 blur-3xl pointer-events-none"></div>
+                    <div class="absolute left-1/3 -bottom-20 w-64 h-64 rounded-full bg-primary-fixed/20 blur-3xl pointer-events-none"></div>
+                    <div class="relative z-10 flex flex-col lg:flex-row lg:items-start justify-between gap-space-lg">
+                        <div class="flex flex-col sm:flex-row items-start gap-space-md max-w-3xl">
+                            <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-xl bg-surface-container flex items-center justify-center p-3 shadow-inner shrink-0">
+                                <div class="w-full h-full rounded-lg bg-primary text-on-primary flex items-center justify-center font-bold text-xl">
+                                    🎓
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-space-xs">
+                                <div class="flex flex-wrap items-center gap-space-xs">
+                                    <span class="font-label-md text-label-md text-on-secondary-fixed bg-secondary-fixed px-space-sm py-0.5 rounded-full font-bold flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-xs">school</span>
+                                        <%= scholarship.program_type || scholarship.category || 'Informasi Beasiswa' %>
+                                    </span>
+                                    <span class="font-label-md text-label-md text-primary bg-primary-fixed px-space-sm py-0.5 rounded-full font-bold flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-xs">verified</span>
+                                        Sumber resmi penyelenggara
+                                    </span>
+                                </div>
+                                <h1 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl text-primary font-bold tracking-tight mt-space-xs">
+                                    <%= detailTitle %>
+                                </h1>
+                                <p class="font-body-lg text-body-lg text-on-surface-variant">
+                                    <%= scholarship.provider || scholarship.institution || 'Penyelenggara beasiswa' %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-sm">
+                        <div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col">
+                            <span class="font-label-sm text-label-sm text-on-surface-variant">Jenjang Studi</span>
+                            <span class="font-label-lg text-label-lg text-primary font-bold"><%= scholarship.level || scholarship.education_level || 'Belum dicantumkan' %></span>
+                        </div>
+                        <div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col">
+                            <span class="font-label-sm text-label-sm text-on-surface-variant">Jenis Pendanaan</span>
+                            <span class="font-label-lg text-label-lg text-secondary font-bold"><%= scholarship.funding || scholarship.funding_type || 'Cek ketentuan resmi' %></span>
+                        </div>
+                        <div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col">
+                            <span class="font-label-sm text-label-sm text-on-surface-variant">Lokasi Studi</span>
+                            <span class="font-label-lg text-label-lg text-on-surface font-bold"><%= scholarship.location || 'Cek ketentuan resmi' %></span>
+                        </div>
+                        <div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col">
+                            <span class="font-label-sm text-label-sm text-on-surface-variant">Jadwal</span>
+                            <span class="font-label-lg text-label-lg text-on-surface font-bold"><%= scholarship.deadlineFormatted || scholarship.deadline || 'Periksa pengumuman resmi' %></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="max-w-7xl mx-auto w-full px-4 sm:px-margin pb-space-xl">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+                    <div class="lg:col-span-8 flex flex-col gap-space-lg">
+                        <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+                            <h2 class="font-headline-lg text-headline-lg text-on-surface font-bold">Tentang Beasiswa Ini</h2>
+                            <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                                <%= scholarship.description || 'Informasi rinci program belum dicantumkan. Silakan periksa persyaratan dan pengumuman terbaru pada portal resmi penyelenggara.' %>
+                            </p>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-space-sm pt-space-xs">
+                                <div class="bg-surface-container-low rounded-lg p-space-sm flex flex-col gap-0.5">
+                                    <span class="font-label-sm text-label-sm text-on-surface-variant">Sasaran Peserta</span>
+                                    <span class="font-body-sm text-body-sm font-semibold text-on-surface"><%= scholarship.target_group || 'Pelajar / Mahasiswa Indonesia' %></span>
+                                </div>
+                                <div class="bg-surface-container-low rounded-lg p-space-sm flex flex-col gap-0.5">
+                                    <span class="font-label-sm text-label-sm text-on-surface-variant">Kuota Penerima</span>
+                                    <span class="font-body-sm text-body-sm font-semibold text-primary"><%= scholarship.quota || 'Sesuai kuota penyelenggara' %></span>
+                                </div>
+                                <div class="bg-surface-container-low rounded-lg p-space-sm flex flex-col gap-0.5">
+                                    <span class="font-label-sm text-label-sm text-on-surface-variant">Batas Usia</span>
+                                    <span class="font-body-sm text-body-sm font-semibold text-on-surface"><%= scholarship.age_limit || 'Sesuai ketentuan' %></span>
+                                </div>
+                                <div class="bg-surface-container-low rounded-lg p-space-sm flex flex-col gap-0.5">
+                                    <span class="font-label-sm text-label-sm text-on-surface-variant">Nilai / IPK Minimum</span>
+                                    <span class="font-body-sm text-body-sm font-semibold text-on-surface"><%= scholarship.min_gpa_or_grade || 'Mengikuti seleksi berkas' %></span>
+                                </div>
+                                <div class="bg-surface-container-low rounded-lg p-space-sm flex flex-col gap-0.5">
+                                    <span class="font-label-sm text-label-sm text-on-surface-variant">Ketentuan Bahasa</span>
+                                    <span class="font-body-sm text-body-sm font-semibold text-on-surface"><%= scholarship.language_requirement || 'Sesuai negara tujuan' %></span>
+                                </div>
+                                <div class="bg-surface-container-low rounded-lg p-space-sm flex flex-col gap-0.5">
+                                    <span class="font-label-sm text-label-sm text-on-surface-variant">Durasi Dukungan</span>
+                                    <span class="font-body-sm text-body-sm font-semibold text-on-surface"><%= scholarship.study_duration || 'Selama masa studi' %></span>
+                                </div>
+                            </div>
+
+                            <div class="bg-surface-container-low rounded-lg p-space-md flex flex-col gap-space-xs">
+                                <span class="font-label-lg text-label-lg text-on-surface font-bold">Status Pendaftaran</span>
+                                <p class="font-body-md text-body-md text-on-surface-variant">
+                                   <%= scholarship.status === 'active' ? 'Pendaftaran aktif' : (scholarship.status === 'closed' ? 'Pendaftaran ditutup' : (scholarship.status || 'Pendaftaran ditutup')) %>
+                                </p>
+                            </div>
+                        </div>
+
+                        <% if (Array.isArray(scholarship.benefits) && scholarship.benefits.length) { %>
+                        <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+                            <h2 class="font-headline-md text-headline-md text-primary font-bold flex items-center gap-2">
+                                <span class="material-symbols-outlined text-secondary">workspace_premium</span>
+                                Cakupan &amp; Manfaat Beasiswa
+                            </h2>
+                            <ul class="flex flex-col gap-2 font-body-md text-body-md text-on-surface-variant">
+                                <% scholarship.benefits.forEach(function(item) { %>
+                                    <li class="flex items-start gap-2">
+                                        <span class="material-symbols-outlined text-secondary text-base mt-0.5 shrink-0">check_circle</span>
+                                        <span><%= item %></span>
+                                    </li>
+                                <% }); %>
+                            </ul>
+                        </div>
+                        <% } %>
+
+                        <% if (Array.isArray(scholarship.requirements) && scholarship.requirements.length) { %>
+                        <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+                            <h2 class="font-headline-md text-headline-md text-primary font-bold flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary">fact_check</span>
+                                Persyaratan Pendaftaran
+                            </h2>
+                            <ul class="flex flex-col gap-2 font-body-md text-body-md text-on-surface-variant">
+                                <% scholarship.requirements.forEach(function(item) { %>
+                                    <li class="flex items-start gap-2">
+                                        <span class="material-symbols-outlined text-primary text-base mt-0.5 shrink-0">arrow_right</span>
+                                        <span><%= item %></span>
+                                    </li>
+                                <% }); %>
+                            </ul>
+                        </div>
+                        <% } %>
+
+                        <% if (Array.isArray(scholarship.documents) && scholarship.documents.length) { %>
+                        <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+                            <h2 class="font-headline-md text-headline-md text-primary font-bold flex items-center gap-2">
+                                <span class="material-symbols-outlined text-secondary">description</span>
+                                Dokumen yang Dibutuhkan
+                            </h2>
+                            <ul class="flex flex-col gap-2 font-body-md text-body-md text-on-surface-variant">
+                                <% scholarship.documents.forEach(function(item) { %>
+                                    <li class="flex items-start gap-2">
+                                        <span class="material-symbols-outlined text-secondary text-base mt-0.5 shrink-0">task</span>
+                                        <span><%= item %></span>
+                                    </li>
+                                <% }); %>
+                            </ul>
+                        </div>
+                        <% } %>
+
+                        <% if (Array.isArray(scholarship.selection_stages) && scholarship.selection_stages.length) { %>
+                        <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md">
+                            <h2 class="font-headline-md text-headline-md text-primary font-bold flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary">timeline</span>
+                                Tahapan Seleksi
+                            </h2>
+                            <ol class="flex flex-col gap-3 font-body-md text-body-md text-on-surface-variant">
+                                <% scholarship.selection_stages.forEach(function(stage, idx) { %>
+                                    <li class="flex items-start gap-3">
+                                        <span class="w-6 h-6 rounded-full bg-primary-fixed text-primary font-bold text-xs flex items-center justify-center shrink-0 mt-0.5"><%= idx + 1 %></span>
+                                        <span><%= stage %></span>
+                                    </li>
+                                <% }); %>
+                            </ol>
+                        </div>
+                        <% } %>
+                    </div>
+
+                    <aside class="lg:col-span-4 flex flex-col gap-space-md">
+                        <div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+                            <h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Langkah Berikutnya</h2>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant">
+                                Pastikan persyaratan dan jadwal terbaru sudah dikonfirmasi langsung kepada penyelenggara.
+                            </p>
+                            <% const officialUrl = scholarship.source_url || scholarship.url; %>
+                            <% if (officialUrl) { %>
+                                <a
+                                    href="<%= officialUrl %>"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="w-full px-space-md py-space-sm rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg font-bold flex items-center justify-center gap-space-xs transition-colors shadow-sm"
+                                >
+                                    <span>Lihat Portal Resmi</span>
+                                    <span class="material-symbols-outlined text-base">open_in_new</span>
+                                </a>
+                            <% } %>
+                            <a class="w-full px-space-md py-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-label-lg text-label-lg font-bold flex items-center justify-center gap-space-xs transition-colors" href="/cari-beasiswa">
+                                Cari Beasiswa Lain
+                            </a>
+                            <a class="w-full px-space-md py-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-label-lg text-label-lg font-bold flex items-center justify-center gap-space-xs transition-colors" href="/bookmark">
+                                Buka Bookmark
+                            </a>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer Navigasi -->
+    <footer class="w-full bg-surface-container-low text-on-surface-variant pt-space-xl pb-space-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-margin">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-lg mb-space-xl">
+                <div class="lg:col-span-2 flex flex-col gap-space-sm">
+                    <div class="flex items-center gap-space-xs mb-space-xs">
+                        <div class="w-7 h-7 rounded-md bg-primary flex items-center justify-center text-on-primary">
+                            <span class="material-symbols-outlined text-base">school</span>
+                        </div>
+                        <span class="font-headline-sm text-headline-sm text-primary font-bold tracking-tight">CariBeasiswa</span>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface-variant max-w-sm">Pusat kurasi informasi beasiswa terpadu untuk pelajar dan mahasiswa Indonesia dalam meraih peluang studi terbaik di dalam negeri maupun luar negeri.</p>
+                    <div class="flex flex-wrap items-center gap-space-sm mt-space-sm">
+                        <span class="font-label-md text-label-md text-secondary bg-surface-container-high px-space-sm py-1 rounded-full">Terverifikasi Resmi</span>
+                        <span class="font-label-md text-label-md text-on-surface-variant bg-surface-container-highest px-space-sm py-1 rounded-full">Kemendikbudristek &amp; LPDP Sync</span>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-space-xs">
+                    <div class="font-label-lg text-label-lg text-on-surface font-bold mb-space-xs">Eksplorasi Beasiswa</div>
+                    <a class="font-body-md text-body-md hover:text-primary transition-colors py-0.5" href="/cari-beasiswa">Semua Beasiswa</a>
+                    <a class="font-body-md text-body-md hover:text-primary transition-colors py-0.5" href="/cari-beasiswa?level=SMA">Beasiswa SMA / SMK</a>
+                    <a class="font-body-md text-body-md hover:text-primary transition-colors py-0.5" href="/cari-beasiswa?level=S1">Beasiswa S1 Sarjana</a>
+                    <a class="font-body-md text-body-md hover:text-primary transition-colors py-0.5" href="/cari-beasiswa?level=S2">Beasiswa S2 &amp; S3 Magister/Doktor</a>
+                    <a class="font-body-md text-body-md hover:text-primary transition-colors py-0.5" href="/bookmark">Daftar Disimpan</a>
+                </div>
+                <div class="flex flex-col gap-space-xs">
+                    <div class="font-label-lg text-label-lg text-on-surface font-bold mb-space-xs">Bantuan &amp; Mitra</div>
+                    <a class="font-body-md text-body-md hover:text-primary transition-colors py-0.5" href="/kontak">Kontak</a>
+                    <a class="font-body-md text-body-md hover:text-primary transition-colors py-0.5" href="/kontak">Helpdesk &amp; Pengaduan</a>
+                    <a class="font-body-md text-body-md hover:text-primary transition-colors py-0.5" href="/kontak">Live Chat Admin</a>
+                    <a class="font-body-md text-body-md hover:text-primary transition-colors py-0.5" href="/kontak">Kemitraan Institusi</a>
+                </div>
+            </div>
+            <div class="pt-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm font-body-sm text-body-sm text-on-surface-variant border-t border-surface-container-high">
+                <p>© <%= new Date().getFullYear() %> CariBeasiswa Indonesia. Hak cipta dilindungi undang-undang.</p>
+                <div class="flex items-center gap-space-md">
+                    <span class="hover:text-primary transition-colors cursor-pointer">Kebijakan Privasi</span>
+                    <span class="hover:text-primary transition-colors cursor-pointer">Syarat &amp; Ketentuan</span>
+                    <span class="hover:text-primary transition-colors cursor-pointer">Portal Resmi Pemerintah</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const badge = document.getElementById('headerBookmarkCount');
+            try {
+                const ids = JSON.parse(localStorage.getItem('caribeasiswa:bookmarks:v1') || '[]');
+                if (badge && Array.isArray(ids)) badge.textContent = ids.length;
+            } catch (e) {}
+        });
+    </script>
+</body>
+</html>

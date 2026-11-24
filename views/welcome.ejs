@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CariBeasiswa Indonesia - Portal Informasi Beasiswa</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00236f',
+                        'primary-container': '#1e3a8a',
+                        secondary: '#006a61',
+                        'secondary-fixed': '#89f5e7',
+                        surface: '#f8f9ff',
+                        'surface-container-low': '#eff4ff',
+                        'surface-container': '#e6eeff',
+                        'surface-container-high': '#dce9ff',
+                        'on-surface': '#0d1c2e',
+                        'on-surface-variant': '#444651',
+                        'on-secondary-fixed-variant': '#005049',
+                        'outline-variant': '#c5c5d3'
+                    },
+                    fontFamily: {
+                        jakarta: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        };
+    </script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24;
+        }
+    </style>
+</head>
+
+<body class="bg-surface text-on-surface antialiased">
+
+<header class="fixed top-0 z-50 w-full bg-white/90 shadow-sm backdrop-blur-xl">
+    <div class="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-4 md:px-8">
+
+        <a href="/" class="flex shrink-0 items-center gap-3">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-lg font-extrabold text-white">
+                CB
+            </span>
+
+            <span class="text-xl font-extrabold tracking-tight text-primary">
+                CariBeasiswa
+                <span class="rounded bg-secondary-fixed px-1.5 py-0.5 text-xs text-primary">ID</span>
+            </span>
+        </a>
+
+        <nav class="hidden items-center gap-1 lg:flex">
+            <a href="/" class="rounded-lg bg-surface-container-high px-4 py-2 text-sm font-bold text-primary transition-all duration-300 ease-in-out">
+                Beranda
+            </a>
+
+            <a href="/cari-beasiswa" class="rounded-lg px-4 py-2 text-sm font-semibold text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-all duration-300 ease-in-out">
+                Cari Beasiswa
+            </a>
+
+            <a href="/bookmark" class="rounded-lg px-4 py-2 text-sm font-semibold text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-all duration-300 ease-in-out">
+                Bookmark
+            </a>
+
+            <a href="/tips-panduan" class="rounded-lg px-4 py-2 text-sm font-semibold text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-all duration-300 ease-in-out">
+                Tips &amp; Panduan
+            </a>
+
+            <a href="/kontak" class="rounded-lg px-4 py-2 text-sm font-semibold text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-all duration-300 ease-in-out">
+                Kontak
+            </a>
+        </nav>
+
+        <div class="flex items-center gap-2">
+
+            <form action="/cari-beasiswa" method="GET" class="relative hidden md:block">
+                <input
+                    name="q"
+                    type="search"
+                    placeholder="Cari beasiswa..."
+                    class="w-48 rounded-lg bg-surface-container-low py-2 pl-9 pr-3 text-sm outline-none focus:bg-white focus:ring-2 focus:ring-primary/20 lg:w-56"
+                >
+
+                <span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-lg text-on-surface-variant">
+                    search
+                </span>
+            </form>
+
+            <a href="/bookmark" title="Bookmark" class="relative rounded-lg p-2 text-on-surface-variant hover:bg-surface-container-low hover:text-primary">
+                <span class="material-symbols-outlined">bookmark</span>
+
+                <span id="header-bookmark-badge" class="absolute right-0.5 top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-secondary px-1 text-[10px] font-bold text-white">
+                    0
+                </span>
+            </a>
+
+            <button
+                id="mobile-menu-button"
+                type="button"
+                aria-label="Buka menu"
+                class="rounded-lg p-2 text-primary lg:hidden"
+            >
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+
+        </div>
+    </div>
+
+    <nav id="mobile-menu" class="hidden border-t bg-white px-4 py-3 lg:hidden">
+        <div class="mx-auto flex max-w-7xl flex-col gap-1">
+
+            <a href="/" class="rounded-lg px-3 py-2 font-semibold text-primary">
+                Beranda
+            </a>
+
+            <a href="/cari-beasiswa" class="rounded-lg px-3 py-2 hover:bg-surface-container-low">
+                Cari Beasiswa
+            </a>
+
+            <a href="/bookmark" class="rounded-lg px-3 py-2 hover:bg-surface-container-low">
+                Bookmark
+            </a>
+
+            <a href="/tips-panduan" class="rounded-lg px-3 py-2 hover:bg-surface-container-low">
+                Tips &amp; Panduan
+            </a>
+
+            <a href="/kontak" class="rounded-lg px-3 py-2 hover:bg-surface-container-low">
+                Kontak
+            </a>
+
+        </div>
+    </nav>
+</header>
+
+
+<main class="min-h-screen pt-20">
+
+    <!-- HERO SECTION -->
+    <section class="relative overflow-hidden bg-gradient-to-b from-surface-container-high via-surface-container-low to-surface py-16 md:py-20">
+
+        <div class="pointer-events-none absolute -left-24 -top-24 h-96 w-96 rounded-full bg-primary/5 blur-3xl"></div>
+        <div class="pointer-events-none absolute -right-20 top-1/4 h-96 w-96 rounded-full bg-secondary/10 blur-3xl"></div>
+
+        <div class="relative mx-auto grid max-w-7xl items-center gap-12 px-4 md:px-8 lg:grid-cols-12">
+
+            <div class="lg:col-span-8">
+
+                <div class="mb-6 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-bold uppercase tracking-wider text-secondary shadow-sm">
+                    <span class="h-2.5 w-2.5 animate-pulse rounded-full bg-secondary"></span>
+                    Informasi beasiswa dari berbagai sumber
+                    <span class="material-symbols-outlined text-base">verified</span>
+                </div>
+
+                <h1 class="mb-5 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight text-primary md:text-5xl">
+                    Temukan Beasiswa yang Tepat untuk Masa Depanmu
+                </h1>
+
+                <p class="mb-8 max-w-2xl text-base leading-8 text-on-surface-variant md:text-lg">
+                    Jelajahi informasi beasiswa dalam dan luar negeri, temukan program sesuai jenjang pendidikan, dan lanjutkan pendaftaran melalui situs penyelenggara.
+                </p>
+
+                <div class="flex flex-wrap gap-3">
+
+                    <a href="/cari-beasiswa" class="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-4 font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-primary-container">
+                        Mulai Cari Beasiswa
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                    </a>
+
+                    <a href="/tips-panduan" class="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-4 font-bold text-primary shadow-sm transition hover:bg-surface-container">
+                        <span class="material-symbols-outlined text-secondary">school</span>
+                        Pelajari Panduan
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- Bagian Bingkai Hero dengan 1 Foto Pelajar Pria -->
+            <div class="hidden lg:col-span-4 lg:block">
+                <div class="relative overflow-hidden rounded-3xl bg-gradient-to-b from-[#b6c4ff]/40 to-[#00236f]/20 shadow-2xl">
+                    
+                    <img
+                        src="/images/Potret Pria Muda dengan Laptop.png"
+                        alt="Pelajar Pria"
+                        class="h-[500px] w-full object-cover object-top transition-transform duration-500 hover:scale-105"
+                    >
+
+                    <!-- Efek gradasi halus & Label mengapung di atas bingkai -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-transparent pointer-events-none"></div>
+
+                    <div class="absolute bottom-4 right-4 rounded-xl bg-white/95 px-4 py-2 shadow-lg backdrop-blur-md z-10">
+                        <p class="text-[10px] font-bold text-secondary uppercase tracking-wider">Gapai Cita-Cita</p>
+                        <p class="text-xs font-extrabold text-primary">Masa Depan Cerah</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- RINGKASAN -->
+    <section class="bg-primary py-10 text-white">
+
+        <div class="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-4 text-center md:grid-cols-4 md:px-8 md:text-left">
+
+            <div>
+                <div class="text-3xl font-extrabold text-secondary-fixed">
+                    <%= typeof beasiswasCount !== 'undefined' ? beasiswasCount : featuredScholarships.length %>
+                </div>
+                <div class="mt-1 text-sm font-bold">Beasiswa Ditampilkan</div>
+                <p class="mt-1 text-xs text-blue-100">Data pada halaman beranda</p>
+            </div>
+
+            <div>
+                <div class="text-3xl font-extrabold text-secondary-fixed">Dalam &amp; Luar</div>
+                <div class="mt-1 text-sm font-bold">Pilihan Lokasi Studi</div>
+                <p class="mt-1 text-xs text-blue-100">Periksa detail program</p>
+            </div>
+
+            <div>
+                <div class="text-3xl font-extrabold text-secondary-fixed">Beragam</div>
+                <div class="mt-1 text-sm font-bold">Penyelenggara</div>
+                <p class="mt-1 text-xs text-blue-100">Pemerintah, swasta, dan lainnya</p>
+            </div>
+
+            <div>
+                <div class="text-3xl font-extrabold text-secondary-fixed">Gratis</div>
+                <div class="mt-1 text-sm font-bold">Akses Informasi</div>
+                <p class="mt-1 text-xs text-blue-100">Cek ketentuan sumber</p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- KATEGORI -->
+    <section class="bg-surface py-16">
+
+        <div class="mx-auto max-w-7xl px-4 md:px-8">
+
+            <div class="mb-8 flex flex-col justify-between gap-3 md:flex-row md:items-end">
+
+                <div>
+                    <p class="mb-2 text-xs font-extrabold uppercase tracking-widest text-secondary">
+                        Klasifikasi Unggulan
+                    </p>
+
+                    <h2 class="text-3xl font-extrabold tracking-tight text-primary">
+                        Jelajahi Kategori Beasiswa
+                    </h2>
+                </div>
+
+                <p class="max-w-xl text-sm leading-6 text-on-surface-variant">
+                    Temukan berbagai program beasiswa berdasarkan jenis penyelenggara.
+                </p>
+
+            </div>
+
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+
+                <a href="/cari-beasiswa?category=Pemerintah" class="group rounded-2xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+                    <span class="material-symbols-outlined mb-4 text-4xl text-primary">account_balance</span>
+                    <h3 class="font-extrabold text-primary">Pemerintah</h3>
+                    <p class="mt-2 text-xs leading-5 text-on-surface-variant">Program dari lembaga pemerintah.</p>
+                    <span class="mt-4 inline-flex items-center gap-1 text-xs font-bold text-secondary">Jelajahi <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+                </a>
+
+                <a href="/cari-beasiswa?category=Swasta" class="group rounded-2xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+                    <span class="material-symbols-outlined mb-4 text-4xl text-primary">business</span>
+                    <h3 class="font-extrabold text-primary">Swasta</h3>
+                    <p class="mt-2 text-xs leading-5 text-on-surface-variant">Program dari perusahaan dan industri.</p>
+                    <span class="mt-4 inline-flex items-center gap-1 text-xs font-bold text-secondary">Jelajahi <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+                </a>
+
+                <a href="/cari-beasiswa?category=Yayasan" class="group rounded-2xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+                    <span class="material-symbols-outlined mb-4 text-4xl text-primary">volunteer_activism</span>
+                    <h3 class="font-extrabold text-primary">Yayasan</h3>
+                    <p class="mt-2 text-xs leading-5 text-on-surface-variant">Dukungan pendidikan dari yayasan.</p>
+                    <span class="mt-4 inline-flex items-center gap-1 text-xs font-bold text-secondary">Jelajahi <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+                </a>
+
+                <a href="/cari-beasiswa?category=Internasional" class="group rounded-2xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+                    <span class="material-symbols-outlined mb-4 text-4xl text-primary">public</span>
+                    <h3 class="font-extrabold text-primary">Internasional</h3>
+                    <p class="mt-2 text-xs leading-5 text-on-surface-variant">Peluang studi di berbagai negara.</p>
+                    <span class="mt-4 inline-flex items-center gap-1 text-xs font-bold text-secondary">Jelajahi <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+                </a>
+
+                <a href="/cari-beasiswa?category=Perguruan%20Tinggi" class="group rounded-2xl bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+                    <span class="material-symbols-outlined mb-4 text-4xl text-primary">school</span>
+                    <h3 class="font-extrabold text-primary">Perguruan Tinggi</h3>
+                    <p class="mt-2 text-xs leading-5 text-on-surface-variant">Program dari institusi pendidikan.</p>
+                    <span class="mt-4 inline-flex items-center gap-1 text-xs font-bold text-secondary">Jelajahi <span class="material-symbols-outlined text-sm">arrow_forward</span></span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- BEASISWA PILIHAN -->
+    <section class="bg-surface-container-low py-16">
+
+        <div class="mx-auto max-w-7xl px-4 md:px-8">
+
+            <div class="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+
+                <div>
+                    <p class="mb-2 text-xs font-extrabold uppercase tracking-widest text-secondary">
+                        Peluang Pendidikan
+                    </p>
+
+                    <h2 class="text-3xl font-extrabold tracking-tight text-primary">
+                        Beasiswa Pilihan
+                    </h2>
+
+                    <p class="mt-2 text-sm text-on-surface-variant">
+                        Beberapa informasi beasiswa yang dapat kamu jelajahi.
+                    </p>
+                </div>
+
+                <a href="/cari-beasiswa" class="inline-flex items-center gap-2 text-sm font-extrabold text-primary hover:text-secondary">
+                    Lihat Semua Beasiswa
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </a>
+
+            </div>
+
+
+            <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+                <% if (featuredScholarships && featuredScholarships.length > 0) { %>
+                    <% featuredScholarships.forEach(function(scholarship) { %>
+                        <% const detailUrl = '/scholarship/' + encodeURIComponent(scholarship.id); %>
+
+                        <article class="flex flex-col justify-between rounded-2xl bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+
+                            <div>
+
+                                <div class="mb-5 flex items-start justify-between gap-3">
+
+                                    <div class="flex items-center gap-3">
+
+                                        <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-surface-container-high text-lg font-extrabold text-primary">
+                                            <%= scholarship.icon || 'B' %>
+                                        </div>
+
+                                        <div>
+                                            <p class="text-xs font-semibold text-on-surface-variant">
+                                                <%= scholarship.provider || 'Penyelenggara' %>
+                                            </p>
+
+                                            <p class="mt-1 flex items-center gap-1 text-[10px] font-bold text-secondary">
+                                                <span class="material-symbols-outlined text-xs">info</span>
+                                                Periksa sumber penyelenggara
+                                            </p>
+                                        </div>
+
+                                    </div>
+
+
+                                    <button
+                                        type="button"
+                                        class="bookmark-btn rounded-lg bg-surface-container-low p-2 text-on-surface-variant transition hover:bg-surface-container hover:text-secondary"
+
+                                        data-scholarship-id="<%= scholarship.id %>"
+                                        data-scholarship-title="<%= scholarship.title %>"
+                                        data-scholarship-provider="<%= scholarship.provider || '' %>"
+                                        data-scholarship-level="<%= scholarship.level || '' %>"
+                                        data-scholarship-funding="<%= scholarship.funding || '' %>"
+                                        data-scholarship-location="<%= scholarship.location || '' %>"
+                                        data-scholarship-deadline="<%= scholarship.deadline || '' %>"
+                                        data-scholarship-status="<%= scholarship.status || '' %>"
+                                        data-scholarship-url="<%= scholarship.url || '' %>"
+                                        data-scholarship-icon="<%= scholarship.icon || 'B' %>"
+                                        data-scholarship-program-type="<%= scholarship.program_type || '' %>"
+
+                                        title="Simpan beasiswa"
+                                    >
+                                        <span class="material-symbols-outlined">bookmark_border</span>
+                                    </button>
+
+                                </div>
+
+
+                                <a href="<%= detailUrl %>" class="block">
+
+                                    <h3 class="mb-2 text-lg font-extrabold leading-snug text-primary hover:text-secondary">
+                                        <%= scholarship.title %>
+                                    </h3>
+
+                                </a>
+
+                                <p class="mb-5 line-clamp-3 text-sm leading-6 text-on-surface-variant">
+                                    <%= scholarship.description || 'Belum ada deskripsi beasiswa.' %>
+                                </p>
+
+
+                                <div class="mb-5 flex flex-wrap gap-2">
+
+                                    <span class="rounded-md bg-surface-container-high px-2.5 py-1 text-xs font-bold text-primary">
+                                        <%= scholarship.level || 'Semua Jenjang' %>
+                                    </span>
+
+                                    <span class="rounded-md bg-secondary-fixed/50 px-2.5 py-1 text-xs font-bold text-on-secondary-fixed-variant">
+                                        <%= scholarship.funding || 'Pendanaan' %>
+                                    </span>
+
+                                    <span class="rounded-md bg-surface-container-low px-2.5 py-1 text-xs font-bold text-on-surface-variant">
+                                        <%= scholarship.location || 'Lokasi tidak disebutkan' %>
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="-mx-6 -mb-6 flex items-center justify-between gap-3 rounded-b-2xl bg-surface-container-low/70 px-6 py-4">
+
+                                <div>
+                                    <p class="text-[10px] font-semibold uppercase tracking-wide text-on-surface-variant">
+                                        Batas pendaftaran
+                                    </p>
+
+                                    <p class="mt-1 text-xs font-extrabold text-primary">
+                                        <%= scholarship.deadline || 'Belum diumumkan' %>
+                                    </p>
+                                </div>
+
+                                <a href="<%= detailUrl %>" class="inline-flex shrink-0 items-center gap-1 text-sm font-extrabold text-primary hover:text-secondary">
+                                    Lihat Detail
+                                    <span class="material-symbols-outlined text-base">chevron_right</span>
+                                </a>
+
+                            </div>
+
+                        </article>
+
+                    <% }); %>
+                <% } else { %>
+
+                    <div class="col-span-full rounded-2xl bg-white px-6 py-14 text-center shadow-sm">
+
+                        <span class="material-symbols-outlined mb-3 text-5xl text-on-surface-variant">
+                            school
+                        </span>
+
+                        <h3 class="mb-2 text-lg font-bold text-primary">
+                            Belum ada beasiswa untuk ditampilkan
+                        </h3>
+
+                        <p class="text-sm text-on-surface-variant">
+                            Silakan periksa kembali nanti atau buka halaman pencarian beasiswa.
+                        </p>
+
+                        <a href="/cari-beasiswa" class="mt-5 inline-flex rounded-lg bg-primary px-5 py-3 text-sm font-bold text-white hover:bg-primary-container">
+                            Cari Beasiswa
+                        </a>
+
+                    </div>
+
+                <% } %>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CTA -->
+    <section class="bg-surface py-16">
+
+        <div class="mx-auto max-w-7xl px-4 md:px-8">
+
+            <div class="relative overflow-hidden rounded-3xl bg-primary p-8 text-center text-white shadow-xl md:p-12 lg:text-left">
+
+                <div class="absolute -bottom-20 -right-10 h-64 w-64 rounded-full bg-secondary-fixed/20 blur-2xl"></div>
+
+                <div class="relative z-10 flex flex-col items-center justify-between gap-8 lg:flex-row">
+
+                    <div class="max-w-2xl">
+
+                        <span class="mb-4 inline-block rounded-full bg-secondary px-3 py-1 text-xs font-bold uppercase tracking-wider">
+                            Mulai Langkahmu
+                        </span>
+
+                        <h2 class="mb-3 text-3xl font-extrabold">
+                            Temukan Peluang Beasiswa yang Sesuai
+                        </h2>
+
+                        <p class="text-sm leading-7 text-blue-100 md:text-base">
+                            Gunakan pencarian dan filter untuk menemukan program berdasarkan kategori, jenjang pendidikan, pendanaan, dan lokasi studi.
+                        </p>
+
+                    </div>
+
+                    <a href="/cari-beasiswa" class="inline-flex shrink-0 items-center gap-2 rounded-xl bg-secondary-fixed px-6 py-4 font-extrabold text-primary shadow-lg transition hover:-translate-y-0.5">
+                        Eksplorasi Beasiswa
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- PANDUAN -->
+    <section class="bg-surface-container-low py-16">
+
+        <div class="mx-auto max-w-7xl px-4 md:px-8">
+
+            <div class="mx-auto mb-10 max-w-2xl text-center">
+
+                <p class="mb-2 text-xs font-extrabold uppercase tracking-widest text-secondary">
+                    Tips &amp; Panduan
+                </p>
+
+                <h2 class="text-3xl font-extrabold text-primary">
+                    Persiapkan Pendaftaran dengan Baik
+                </h2>
+
+                <p class="mt-3 text-sm leading-6 text-on-surface-variant">
+                    Hal penting yang perlu diperhatikan sebelum mendaftar beasiswa.
+                </p>
+
+            </div>
+
+
+            <div class="grid gap-5 md:grid-cols-3">
+
+                <div class="rounded-2xl bg-white p-6 shadow-sm">
+
+                    <span class="material-symbols-outlined mb-4 text-3xl text-secondary">
+                        fact_check
+                    </span>
+
+                    <h3 class="mb-2 font-bold text-primary">
+                        Periksa Persyaratan
+                    </h3>
+
+                    <p class="text-sm leading-6 text-on-surface-variant">
+                        Pastikan jenjang, nilai, dokumen, dan kriteria lainnya sesuai ketentuan penyelenggara.
+                    </p>
+
+                </div>
+
+
+                <div class="rounded-2xl bg-white p-6 shadow-sm">
+
+                    <span class="material-symbols-outlined mb-4 text-3xl text-secondary">
+                        calendar_month
+                    </span>
+
+                    <h3 class="mb-2 font-bold text-primary">
+                        Catat Jadwal
+                    </h3>
+
+                    <p class="text-sm leading-6 text-on-surface-variant">
+                        Perhatikan tanggal pembukaan dan penutupan. Jadwal dapat berubah sewaktu-waktu.
+                    </p>
+
+                </div>
+
+
+                <div class="rounded-2xl bg-white p-6 shadow-sm">
+
+                    <span class="material-symbols-outlined mb-4 text-3xl text-secondary">
+                        language
+                    </span>
+
+                    <h3 class="mb-2 font-bold text-primary">
+                        Gunakan Situs Resmi
+                    </h3>
+
+                    <p class="text-sm leading-6 text-on-surface-variant">
+                        Baca pengumuman terbaru dan lakukan pendaftaran melalui tautan resmi penyelenggara.
+                    </p>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer class="bg-surface-container-low py-12 text-on-surface-variant">
+
+    <div class="mx-auto max-w-7xl px-4 md:px-8">
+
+        <div class="mb-10 grid gap-8 md:grid-cols-2 lg:grid-cols-5">
+
+            <div class="lg:col-span-2">
+
+                <a href="/" class="mb-4 inline-flex items-center gap-3">
+
+                    <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-primary font-extrabold text-white">
+                        CB
+                    </span>
+
+                    <span class="text-xl font-extrabold text-primary">
+                        CariBeasiswa ID
+                    </span>
+
+                </a>
+
+                <p class="max-w-sm text-sm leading-6">
+                    Portal informasi beasiswa untuk membantu pelajar dan mahasiswa menemukan peluang pendidikan. Konfirmasikan kembali informasi melalui situs resmi penyelenggara.
+                </p>
+
+            </div>
+
+
+            <div class="flex flex-col gap-3">
+
+                <h3 class="font-extrabold text-on-surface">
+                    Eksplorasi
+                </h3>
+
+                <a href="/cari-beasiswa" class="text-sm hover:text-primary">
+                    Semua Beasiswa
+                </a>
+
+                <a href="/cari-beasiswa?level=SMA" class="text-sm hover:text-primary">
+                    Beasiswa SMA / SMK
+                </a>
+
+                <a href="/bookmark" class="text-sm hover:text-primary">
+                    Bookmark
+                </a>
+
+            </div>
+
+
+            <div class="flex flex-col gap-3">
+
+                <h3 class="font-extrabold text-on-surface">
+                    Panduan
+                </h3>
+
+                <a href="/tips-panduan" class="text-sm hover:text-primary">
+                    Tips &amp; Panduan
+                </a>
+
+            </div>
+
+
+            <div class="flex flex-col gap-3">
+
+                <h3 class="font-extrabold text-on-surface">
+                    Bantuan
+                </h3>
+
+                <a href="/kontak" class="text-sm hover:text-primary">
+                    Kontak
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="flex flex-col items-center justify-between gap-3 border-t border-outline-variant/40 pt-6 text-center text-xs md:flex-row md:text-left">
+
+            <p>
+                &copy; <%= new Date().getFullYear() %> CariBeasiswa Indonesia. Seluruh hak cipta dilindungi.
+            </p>
+
+            <p>
+                Periksa informasi dan jadwal pada situs resmi penyelenggara.
+            </p>
+
+        </div>
+
+    </div>
+</footer>
+
+
+<!-- JAVASCRIPT -->
+<script>
+    const menuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (menuButton && mobileMenu) {
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
+
+    (function () {
+        const bookmarkStorageKey = 'caribeasiswa:bookmarks:v1';
+        const bookmarkDetailsStorageKey = 'caribeasiswa:bookmark-details:v1';
+        const badge = document.getElementById('header-bookmark-badge');
+
+        function readStorage(key, fallback) {
+            try {
+                const value = localStorage.getItem(key);
+                return value ? JSON.parse(value) : fallback;
+            } catch (error) {
+                return fallback;
+            }
+        }
+
+        const savedIds = new Set(readStorage(bookmarkStorageKey, []).map(String));
+        const bookmarkDetails = readStorage(bookmarkDetailsStorageKey, {});
+
+        function syncUI() {
+            if (badge) badge.textContent = savedIds.size;
+            document.querySelectorAll('.bookmark-btn').forEach(function (button) {
+                const id = String(button.dataset.scholarshipId);
+                const isSaved = savedIds.has(id);
+                button.classList.toggle('text-secondary', isSaved);
+                const iconEl = button.querySelector('.material-symbols-outlined');
+                if (iconEl) {
+                    iconEl.textContent = isSaved ? 'bookmark' : 'bookmark_border';
+                }
+            });
+        }
+
+        document.querySelectorAll('.bookmark-btn').forEach(function (button) {
+            button.addEventListener('click', function () {
+                const id = String(button.dataset.scholarshipId);
+                if (savedIds.has(id)) {
+                    savedIds.delete(id);
+                    delete bookmarkDetails[id];
+                } else {
+                    savedIds.add(id);
+                    bookmarkDetails[id] = {
+                        id: id,
+                        title: button.dataset.scholarshipTitle,
+                        provider: button.dataset.scholarshipProvider,
+                        level: button.dataset.scholarshipLevel,
+                        funding: button.dataset.scholarshipFunding,
+                        location: button.dataset.scholarshipLocation,
+                        deadline: button.dataset.scholarshipDeadline,
+                        status: button.dataset.scholarshipStatus,
+                        url: button.dataset.scholarshipUrl,
+                        icon: 'school',
+                        program_type: button.dataset.scholarshipProgramType,
+                        category: 'beranda',
+                        savedAt: Date.now()
+                    };
+                }
+                localStorage.setItem(bookmarkStorageKey, JSON.stringify(Array.from(savedIds)));
+                localStorage.setItem(bookmarkDetailsStorageKey, JSON.stringify(bookmarkDetails));
+                syncUI();
+            });
+        });
+
+        syncUI();
+    })();
+</script>
+
+</body>
+</html>

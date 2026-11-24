@@ -1,0 +1,16 @@
+{
+    "$schema": "https://www.schemastore.org/package.json",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "node --check server.js && node --check data/scholarships.js && node --check data/scholarshipCatalog.js && node --check services/beasiswaApiService.js",
+        "dev": "node server.js",
+        "start": "node server.js",
+        "lint": "node --check server.js && node --check data/scholarships.js && node --check data/scholarshipCatalog.js && node --check services/beasiswaApiService.js"
+    },
+    "dependencies": {
+        "axios": "^1.21.1",
+        "ejs": "^7.0.2",
+        "express": "^5.3.0"
+    }
+}

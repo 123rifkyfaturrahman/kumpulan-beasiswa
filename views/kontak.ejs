@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="web_standard" name="shell-type">
+    <title>Kontak &amp; Bantuan | CariBeasiswa ID</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <style>
+        @layer base {
+            html, body { margin: 0; padding: 0; }
+            body { overscroll-behavior: none; }
+            main > :first-child { margin-top: 0 !important; }
+            main > :last-child { margin-bottom: 0 !important; }
+        }
+        ::-webkit-scrollbar { display: none; }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-bright": "#f8f9ff",
+                        "primary": "#00236f",
+                        "secondary-container": "#86f2e4",
+                        "surface-container-low": "#eff4ff",
+                        "on-tertiary-container": "#ef9900",
+                        "surface": "#f8f9ff",
+                        "on-secondary-fixed": "#00201d",
+                        "outline-variant": "#c5c5d3",
+                        "on-primary-fixed-variant": "#264191",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#dce9ff",
+                        "on-surface-variant": "#444651",
+                        "on-primary-container": "#90a8ff",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "outline": "#757682",
+                        "surface-dim": "#ccdbf3",
+                        "surface-tint": "#4059aa",
+                        "inverse-surface": "#233144",
+                        "on-primary-fixed": "#00164e",
+                        "surface-container-highest": "#d5e3fc",
+                        "on-surface": "#0d1c2e",
+                        "primary-fixed": "#dce1ff",
+                        "inverse-primary": "#b6c4ff",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "primary-container": "#1e3a8a",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "on-background": "#0d1c2e",
+                        "surface-container": "#e6eeff",
+                        "error": "#ba1a1a",
+                        "secondary-fixed": "#89f5e7",
+                        "background": "#f8f9ff",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#5c3800",
+                        "tertiary-fixed": "#ffddb8",
+                        "on-tertiary-fixed": "#2a1700",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-secondary-container": "#006f66",
+                        "on-primary": "#ffffff",
+                        "secondary": "#006a61",
+                        "tertiary": "#3e2400",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#005049",
+                        "surface-variant": "#d5e3fc",
+                        "secondary-fixed-dim": "#6bd8cb",
+                        "on-secondary": "#ffffff"
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                    spacing: {
+                        "margin": "2rem", "margin-mobile": "1rem", "space-md": "1rem", "space-lg": "1.5rem",
+                        "space-xl": "2.5rem", "gutter": "1.5rem", "space-sm": "0.5rem", "gutter-mobile": "1rem", "space-xs": "0.25rem"
+                    },
+                    fontFamily: {
+                        "headline-xl-mobile": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "display-hero": ["Plus Jakarta Sans"],
+                        "display-hero-mobile": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "label-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"], "headline-xl": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"],
+                        "headline-sm": ["Plus Jakarta Sans"]
+                    },
+                    fontSize: {
+                        "headline-xl-mobile": ["26px", { "lineHeight": "34px", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+                        "display-hero": ["48px", { "lineHeight": "56px", "fontWeight": "800" }],
+                        "display-hero-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "800" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+                        "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "700" }],
+                        "headline-xl": ["36px", { "lineHeight": "44px", "fontWeight": "700" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "headline-md": ["22px", { "lineHeight": "30px", "fontWeight": "600" }],
+                        "headline-lg": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }],
+                        "headline-sm": ["18px", { "lineHeight": "26px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased flex flex-col min-h-screen">
+
+<!-- Header Navigasi -->
+<header class="fixed top-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
+    <div class="h-20 max-w-7xl mx-auto px-margin flex items-center justify-between gap-gutter">
+
+        <!-- Logo -->
+        <div class="flex items-center gap-space-md shrink-0">
+            <img
+                alt="CariBeasiswa Brand Logo"
+                class="h-8 w-auto object-contain"
+                src="https://placehold.co/32x32/00236f/ffffff?text=CB"
+            >
+
+            <a class="flex items-center" href="/">
+                <span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">
+                    CariBeasiswa
+                </span>
+                <span class="font-label-sm text-label-sm text-secondary bg-secondary-fixed/50 px-space-xs py-0.5 rounded ml-space-xs">
+                    ID
+                </span>
+            </a>
+        </div>
+
+        <!-- Navigasi Desktop -->
+        <nav class="hidden md:flex items-center gap-1">
+
+            <a href="/"
+               class="text-gray-600 hover:text-blue-900 px-4 py-2">
+                Beranda
+            </a>
+
+            <a href="/cari-beasiswa"
+               class="text-gray-600 hover:text-blue-900 px-4 py-2">
+                Cari Beasiswa
+            </a>
+
+            <a href="/bookmark"
+               class="text-gray-600 hover:text-blue-900 px-4 py-2">
+                Bookmark
+            </a>
+
+            <a href="/tips-panduan"
+               class="text-gray-600 hover:text-blue-900 px-4 py-2">
+                Tips &amp; Panduan
+            </a>
+
+            <a href="/kontak"
+               class="bg-blue-100 text-blue-900 px-4 py-2 rounded-xl font-bold">
+                Kontak
+            </a>
+        </nav>
+
+        <!-- Bagian Kanan -->
+        <div class="flex items-center gap-space-md">
+
+            <!-- Pencarian -->
+            <form action="/cari-beasiswa" method="GET" class="relative hidden lg:block w-56">
+                <input
+                    name="keyword"
+                    class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm rounded-lg pl-9 pr-space-md py-space-sm placeholder:text-on-surface-variant focus:outline-none focus:bg-surface-container-lowest transition-colors"
+                    placeholder="Cari beasiswa, jenjang..."
+                    type="text"
+                >
+                <span class="material-symbols-outlined text-on-surface-variant text-base absolute left-space-sm top-1/2 -translate-y-1/2 pointer-events-none">
+                    search
+                </span>
+            </form>
+
+            <!-- Bookmark -->
+            <a class="relative p-space-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low rounded-lg transition-colors"
+               href="/bookmark"
+               title="Simpanan Beasiswa">
+                <span class="material-symbols-outlined">bookmark</span>
+                <span id="header-bookmark-badge" class="absolute top-1 right-1 w-4 h-4 rounded-full bg-secondary text-on-secondary font-label-sm text-[10px] flex items-center justify-center font-bold">
+                    0
+                </span>
+            </a>
+
+            <!-- Tombol Dropdown Mobile -->
+            <button
+                id="mobile-menu-button"
+                type="button"
+                class="md:hidden p-2 rounded-lg text-primary hover:bg-surface-container-low transition-colors"
+                aria-label="Buka menu"
+                aria-expanded="false"
+                aria-controls="mobile-menu">
+
+                <span id="menu-open-icon" class="material-symbols-outlined text-3xl">
+                    menu
+                </span>
+
+                <span id="menu-close-icon" class="material-symbols-outlined text-3xl hidden">
+                    close
+                </span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Dropdown Mobile -->
+    <nav id="mobile-menu" class="hidden md:hidden border-t border-surface-container-high bg-white px-4 py-3 shadow-lg">
+        <div class="mx-auto flex max-w-7xl flex-col gap-1">
+
+            <a href="/"
+               class="rounded-lg px-3 py-3 text-gray-600 hover:bg-surface-container-low">
+                Beranda
+            </a>
+
+            <a href="/cari-beasiswa"
+               class="rounded-lg px-3 py-3 text-gray-600 hover:bg-surface-container-low">
+                Cari Beasiswa
+            </a>
+
+            <a href="/bookmark"
+               class="rounded-lg px-3 py-3 text-gray-600 hover:bg-surface-container-low">
+                Bookmark
+            </a>
+
+            <a href="/tips-panduan"
+               class="rounded-lg px-3 py-3 text-gray-600 hover:bg-surface-container-low">
+                Tips &amp; Panduan
+            </a>
+
+            <a href="/kontak"
+               class="rounded-lg px-3 py-3 bg-blue-100 text-blue-900 font-bold">
+                Kontak
+            </a>
+
+        </div>
+    </nav>
+</header>
+
+
+    <main class="w-full pt-20 bg-surface flex-grow">
+        <div class="flex flex-col w-full">
+            <!-- Top Ambient Glow Gradient Decor -->
+            <div class="relative w-full overflow-hidden">
+                <div class="absolute -top-32 -left-20 w-96 h-96 rounded-full bg-secondary-container/20 blur-3xl pointer-events-none"></div>
+                <div class="absolute top-10 right-0 w-80 h-80 rounded-full bg-primary-fixed/30 blur-3xl pointer-events-none"></div>
+                
+                <div class="max-w-7xl mx-auto px-margin-mobile md:px-margin pt-space-lg pb-space-md">
+                    <!-- Overline & Main Title Area -->
+                    <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md pb-space-lg border-b border-surface-container-high">
+                        <div class="max-w-2xl">
+                            <div class="inline-flex items-center gap-space-xs bg-surface-container-high text-primary px-space-sm py-1 rounded-full font-label-md text-label-md mb-space-xs">
+                                <span class="material-symbols-outlined text-sm text-secondary">support_agent</span>
+                                <span>Layanan Bantuan Resmi &amp; Kemitraan</span>
+                            </div>
+                            <h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight font-bold">
+                                Hubungi Kami - Pusat Kontak &amp; Bantuan CariBeasiswa
+                            </h1>
+                            <p class="font-body-lg text-body-lg text-on-surface-variant mt-space-xs">
+                                Punya pertanyaan seputar beasiswa, kendala pendaftaran, atau peluang kemitraan institusi? Tim CariBeasiswa siap mendampingi perjalanan akademik Anda.
+                            </p>
+                        </div>
+                        <a class="inline-flex items-center gap-space-xs self-start md:self-auto bg-surface-container-lowest text-primary px-space-md py-space-sm rounded-lg shadow-sm hover:bg-surface-container transition-all font-label-lg text-label-lg group" data-path="cari-beasiswa" href="/cari-beasiswa">
+                            <span class="material-symbols-outlined text-base group-hover:-translate-x-0.5 transition-transform">arrow_back</span>
+                            <span>Kembali ke Cari Beasiswa</span>
+                        </a>
+                    </div>
+
+                    <!-- Quick Stats / Contact Highlights -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md my-space-lg">
+                        <div class="p-space-md rounded-2xl bg-surface-container-lowest shadow-sm flex items-center gap-space-md">
+                            <span class="w-12 h-12 rounded-xl bg-primary-fixed text-primary flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-2xl">schedule</span>
+                            </span>
+                            <div>
+                                <div class="font-label-sm text-label-sm text-on-surface-variant font-semibold">Respon Cepat</div>
+                                <div class="font-label-lg text-label-lg text-primary font-bold">&lt; 15 Menit Chat</div>
+                            </div>
+                        </div>
+                        <div class="p-space-md rounded-2xl bg-surface-container-lowest shadow-sm flex items-center gap-space-md">
+                            <span class="w-12 h-12 rounded-xl bg-secondary-container text-secondary flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-2xl">verified</span>
+                            </span>
+                            <div>
+                                <div class="font-label-sm text-label-sm text-on-surface-variant font-semibold">Verifikasi Link</div>
+                                <div class="font-label-lg text-label-lg text-primary font-bold">100% Akurat &amp; Resmi</div>
+                            </div>
+                        </div>
+                        <div class="p-space-md rounded-2xl bg-surface-container-lowest shadow-sm flex items-center gap-space-md">
+                            <span class="w-12 h-12 rounded-xl bg-surface-container-high text-primary flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-2xl">question_answer</span>
+                            </span>
+                            <div>
+                                <div class="font-label-sm text-label-sm text-on-surface-variant font-semibold">Layanan Aktif</div>
+                                <div class="font-label-lg text-label-lg text-primary font-bold">Senin - Jumat 09-17 WIB</div>
+                            </div>
+                        </div>
+                        <div class="p-space-md rounded-2xl bg-surface-container-lowest shadow-sm flex items-center gap-space-md">
+                            <span class="w-12 h-12 rounded-xl bg-secondary-fixed/50 text-secondary flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-2xl">lock_person</span>
+                            </span>
+                            <div>
+                                <div class="font-label-sm text-label-sm text-on-surface-variant font-semibold">Keamanan Data</div>
+                                <div class="font-label-lg text-label-lg text-primary font-bold">Terkripsi &amp; Terlindungi</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section Hubungi WhatsApp -->
+            <div class="max-w-7xl mx-auto px-margin-mobile md:px-margin w-full pb-space-xl">
+                <div class="rounded-2xl bg-surface-container-lowest border border-surface-container-high shadow-sm p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-space-lg">
+                    <div class="flex items-start sm:items-center gap-space-md">
+                        <div class="w-14 h-14 rounded-2xl bg-secondary-container text-secondary flex items-center justify-center shrink-0">
+                            <span class="material-symbols-outlined text-3xl">chat</span>
+                        </div>
+                        <div>
+                            <span class="inline-block font-label-sm text-label-sm text-secondary bg-secondary-fixed/50 px-2.5 py-0.5 rounded-full mb-1">
+                                Bantuan Langsung • 0823-4222-4982
+                            </span>
+                            <h2 class="font-headline-md text-headline-md text-on-surface font-bold">
+                                Mengalami Kendala? Hubungi Kami via WhatsApp
+                            </h2>
+                            <p class="font-body-md text-body-md text-on-surface-variant mt-1 max-w-2xl">
+                                Konsultasikan kendala pendaftaran, tautan beasiswa bermasalah, atau pertanyaan lainnya langsung dengan tim bantuan kami melalui WhatsApp.
+                            </p>
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/6282342224982?text=Halo%20Tim%20CariBeasiswa,%20saya%20membutuhkan%20bantuan%20terkait%20kendala%20beasiswa."
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="inline-flex items-center justify-center gap-2.5 bg-secondary hover:bg-on-secondary-container text-on-secondary font-label-lg text-label-lg px-6 py-3.5 rounded-xl shadow-sm transition-all shrink-0 w-full md:w-auto">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zM12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.418A9.955 9.955 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+                        </svg>
+                        <span>Chat WhatsApp Sekarang</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer dengan Tautan Rute yang Aktif -->
+    <footer class="bg-surface-container-low border-t border-surface-container-high py-12 px-margin-mobile md:px-margin mt-auto">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
+            <!-- Kolom 1: Logo & Deskripsi -->
+            <div class="md:col-span-5 space-y-4">
+                <div class="flex items-center gap-2">
+                    <span class="bg-primary text-white font-bold text-xs px-2 py-1 rounded">CB</span>
+                    <span class="font-headline-sm text-headline-sm font-bold text-primary tracking-tight">CariBeasiswa</span>
+                </div>
+                <p class="text-on-surface-variant text-body-md max-w-md">
+                    Pusat kurasi informasi beasiswa terpadu untuk pelajar dan mahasiswa Indonesia dalam meraih peluang studi terbaik di dalam negeri maupun luar negeri.
+                </p>
+                <div class="flex flex-wrap items-center gap-2 pt-2">
+                    <span class="bg-secondary-fixed/50 text-secondary text-label-md font-semibold px-3 py-1 rounded-full">Terverifikasi Resmi</span>
+                    <span class="bg-surface-container-high text-primary text-label-md font-semibold px-3 py-1 rounded-full">Kemendikbudristek &amp; LPDP Sync</span>
+                </div>
+            </div>
+
+            <!-- Kolom 2: Eksplorasi Beasiswa -->
+            <div class="md:col-span-2 space-y-3">
+                <h4 class="font-headline-sm text-on-surface font-bold text-sm">Eksplorasi Beasiswa</h4>
+                <ul class="space-y-2 text-body-sm text-on-surface-variant">
+                    <li><a href="/cari-beasiswa" class="hover:text-primary transition-colors">Semua Beasiswa</a></li>
+                    <li><a href="/cari-beasiswa?jenjang=s1" class="hover:text-primary transition-colors">Beasiswa S1 Sarjana</a></li>
+                    <li><a href="/cari-beasiswa?jenjang=s2-s3" class="hover:text-primary transition-colors">Beasiswa S2 &amp; S3 Magister/Doktor</a></li>
+                    <li><a href="/cari-beasiswa?kategori=fully-funded" class="hover:text-primary transition-colors">Fully Funded Programs</a></li>
+                    <li><a href="/bookmark" class="hover:text-primary transition-colors">Daftar Disimpan</a></li>
+                </ul>
+            </div>
+
+            <!-- Kolom 3: Persiapan & Panduan -->
+            <div class="md:col-span-3 space-y-3">
+                <h4 class="font-headline-sm text-on-surface font-bold text-sm">Persiapan &amp; Panduan</h4>
+                <ul class="space-y-2 text-body-sm text-on-surface-variant">
+                    <li><a href="/tips-panduan" class="hover:text-primary transition-colors">Panduan Motivation Letter</a></li>
+                    <li><a href="/tips-panduan" class="hover:text-primary transition-colors">Simulasi Tes IELTS / TOEFL</a></li>
+                    <li><a href="/tips-panduan" class="hover:text-primary transition-colors">Wawancara Beasiswa</a></li>
+                    <li><a href="/tips-panduan" class="hover:text-primary transition-colors">Kalender Pendaftaran</a></li>
+                </ul>
+            </div>
+
+            <!-- Kolom 4: Bantuan & Mitra -->
+            <div class="md:col-span-2 space-y-3">
+                <h4 class="font-headline-sm text-on-surface font-bold text-sm">Bantuan &amp; Mitra</h4>
+                <ul class="space-y-2 text-body-sm text-on-surface-variant">
+                    <li><a href="/kontak" class="hover:text-primary transition-colors">Kontak</a></li>
+                    <li><a href="https://wa.me/6282342224982?text=Halo%20Tim%20CariBeasiswa,%20saya%20ingin%20mengajukan%20helpdesk%20atau%20pengaduan." target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">Helpdesk &amp; Pengaduan</a></li>
+                    <li><a href="https://wa.me/6282342224982?text=Halo%20Admin,%20saya%20ingin%20berkonsultasi%20melalui%20Live%20Chat." target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">Live Chat Admin</a></li>
+                    <li><a href="/kontak" class="hover:text-primary transition-colors">Kemitraan Institusi</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bagian Bawah Footer (Copyright & Legal) -->
+        <div class="max-w-7xl mx-auto pt-6 border-t border-surface-container-high flex flex-col sm:flex-row items-center justify-between text-body-sm text-on-surface-variant gap-4">
+            <p>&copy; <%= new Date().getFullYear() %> CariBeasiswa Indonesia. Hak cipta dilindungi undang-undang.</p>
+            <div class="flex items-center gap-6">
+                <a href="/kontak" class="hover:text-primary transition-colors">Kebijakan Privasi</a>
+                <a href="/kontak" class="hover:text-primary transition-colors">Syarat &amp; Ketentuan</a>
+                <a href="https://www.kemdikbud.go.id" target="_blank" rel="noopener noreferrer" class="hover:text-primary transition-colors">Portal Resmi Pemerintah</a>
+            </div>
+        </div>
+    </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const badge = document.getElementById('header-bookmark-badge');
+    try {
+        const ids = JSON.parse(localStorage.getItem('caribeasiswa:bookmarks:v1') || '[]');
+        if (badge && Array.isArray(ids)) badge.textContent = ids.length;
+    } catch (e) {}
+
+    const menuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const openIcon = document.getElementById('menu-open-icon');
+    const closeIcon = document.getElementById('menu-close-icon');
+
+    if (!menuButton || !mobileMenu) return;
+
+    menuButton.addEventListener('click', function () {
+        const isOpening = mobileMenu.classList.contains('hidden');
+
+        mobileMenu.classList.toggle('hidden');
+        openIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+
+        menuButton.setAttribute('aria-expanded', isOpening ? 'true' : 'false');
+        menuButton.setAttribute(
+            'aria-label',
+            isOpening ? 'Tutup menu' : 'Buka menu'
+        );
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+            mobileMenu.classList.add('hidden');
+            openIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+            menuButton.setAttribute('aria-expanded', 'false');
+            menuButton.setAttribute('aria-label', 'Buka menu');
+        });
+    });
+
+    window.addEventListener('resize', function () {
+        if (window.innerWidth >= 768) {
+            mobileMenu.classList.add('hidden');
+            openIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+            menuButton.setAttribute('aria-expanded', 'false');
+        }
+    });
+});
+</script>
+
+</body>
+</html>
