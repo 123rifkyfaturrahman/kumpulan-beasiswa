@@ -329,8 +329,6 @@ export function generateExtendedScholarships(startNumericId = 11) {
 
   // 1B. Kota/Kabupaten Besar & Yayasan/Perusahaan khusus SMA/SMK (~520 program)
   const smaSponsors = [
-   
-    { name: 'KJP Plus & KJMU Persiapan DKI Jakarta', cat: 'Pemerintah', url: 'https://kjp.jakarta.go.id/' },
     { name: 'PIP Madrasah Aliyah (Kemenag RI)', cat: 'Pemerintah', url: 'https://pipmadrasah.kemenag.go.id/' },
     { name: 'Beasiswa Indonesia Maju (BIM) Persiapan S1', cat: 'Pemerintah', url: 'https://bim.kemdikbud.go.id/' },
     { name: 'MAN Insan Cendekia (Kemenag RI)', cat: 'Pemerintah', url: 'https://kemenag.go.id/' },
